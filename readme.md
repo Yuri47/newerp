@@ -42,4 +42,6 @@ php artisan migrate
 
 php artisan db:seed class=CustonUsers
 
+npm install
+
 php artisan serve
