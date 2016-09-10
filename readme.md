@@ -50,4 +50,3 @@ php artisan serve
 
 npm install vueify@8.5.2
 
-{\color[HTML]{888888} net}
