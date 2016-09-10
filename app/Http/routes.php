@@ -11,6 +11,7 @@
 |
 */
 Route::get('usuarios', ['as' => 'usuarios', 'uses' => 'UsersController@showUsers']);
+Route::get('usuarios/listar', ['as' => 'usuarios.listar', 'uses' => 'UsersController@listar']);
 
 
  Route::get('/', function () {

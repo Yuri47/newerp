@@ -13,9 +13,15 @@ class UsersController extends Controller
 
 	public function showUsers() {
 
-		$users = User::all();
+		
 
-		return view('usuarios', ['tst' => 'tst'])->with(compact('users'));
+		return view('usuarios');
+	}
+
+	public function listar() {
+
+		return \Response::json(User::all(), 200);
+
 	}
 
 
