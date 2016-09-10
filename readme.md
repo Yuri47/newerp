@@ -40,8 +40,14 @@ php artisan key:generate
 
 php artisan migrate
 
-php artisan db:seed class=CustonUsers
+php artisan db:seed --class=CustonUsers
 
 npm install
 
 php artisan serve
+
+*if during the compilation of js and vue files appear the error: vue-hot-reload-api type this command:
+
+npm install vueify@8.5.2
+
+{\color[HTML]{888888} net}
