@@ -3,28 +3,29 @@
 
 @section('content')
 
-
-<h1>Usuarios</h1>
-<h1>@{{title}} </h1>
-
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
-
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-       
-
+@{{title}}
+<script>console.log('@{{nameName}}')</script>
 
 <vc-users></vc-users>
+<form action="" method="POST" role="form">
+	<legend>Form title</legend>
+
+	<div class="form-group">
+		<label for="">Name</label>
+		<input type="text" class="form-control" id="" placeholder="@{{nameName}}" value="@{{nameName}}">
+	</div>
+	<div class="form-group">
+		<label for="">Email</label>
+		<input type="text" class="form-control" id="" placeholder="Input field" value="@{{emailEmail}}">
+	</div>
+
+	
+
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+ 
 
 
-
-
-
-    </div>
-  </div>
-</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 @stop

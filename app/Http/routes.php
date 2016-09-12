@@ -17,3 +17,7 @@ Route::get('usuarios/listar', ['as' => 'usuarios.listar', 'uses' => 'UsersContro
  Route::get('/', function () {
      return view('welcome');
  });
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

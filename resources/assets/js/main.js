@@ -8,9 +8,18 @@ Vue.use(VueResource)
 
  	components: {
 		VcUsers 
-	},
+	}, 
 
- 	data:{
- 		title: ' '
+ 	data: function(){
+ 		return{
+ 		title: VcUsers.data().title, // isso pega o valor da variavel la de dentro do services.vue
+ 		nameName: VcUsers.data().nameName,
+ 		
+
+ 		 }
  	}
+    
+       
+    
+
  })
