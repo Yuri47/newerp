@@ -1,13 +1,17 @@
 import Vue from 'vue'
 import VcUsers from './components/services.vue';
+import VcClients from './components/clients.vue';
+import VcInsert from './components/insertClient.vue'; 
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
 
  new Vue ({
- 	el: '.container',
+ 	el: 'body',
 
  	components: {
-		VcUsers 
+		VcUsers,
+		VcClients,
+		VcInsert 
 	}, 
 
  	data: function(){

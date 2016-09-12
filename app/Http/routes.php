@@ -12,6 +12,9 @@
 */
 Route::get('usuarios', ['as' => 'usuarios', 'uses' => 'UsersController@showUsers']);
 Route::get('usuarios/listar', ['as' => 'usuarios.listar', 'uses' => 'UsersController@listar']);
+Route::get('clients/list', function () {
+	return \Response::json(App\Clients::all(), 200);
+});
 
 
  Route::get('/', function () {

@@ -4,10 +4,14 @@
 @section('content')
 
 @{{title}}
+
 <script>console.log('@{{nameName}}')</script>
 
+ 
 <vc-users></vc-users>
-<form action="" method="POST" role="form">
+<vc-insert></vc-insert>
+ 
+<!-- <form action="#" method="POST" role="form">
 	<legend>Form title</legend>
 
 	<div class="form-group">
@@ -16,14 +20,14 @@
 	</div>
 	<div class="form-group">
 		<label for="">Email</label>
-		<input type="text" class="form-control" id="" placeholder="Input field" value="@{{emailEmail}}">
+		<input type="text" class="form-control" id="" placeholder="Input field"  v-model="title">
 	</div>
 
 	
 
 	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
- 
+  -->
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

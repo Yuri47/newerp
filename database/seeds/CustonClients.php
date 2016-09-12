@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CustonUsers extends Seeder
+class CustonClients extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,11 +18,10 @@ class CustonUsers extends Seeder
         $limit = 50;
 
         for ($i = 0; $i < $limit; $i++) {
-            DB::table('users')->insert([ //,
+            DB::table('clients')->insert([ //,
                 'name' => $faker->name,
-        		'email' => $faker->email,
-       			'password' => bcrypt(str_random(10)),
-       			'remember_token' => str_random(10)
+        		'adress' => $faker->city,
+                'fone' => $faker->phoneNumber 
             ]);
         }
 

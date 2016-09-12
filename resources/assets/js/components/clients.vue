@@ -10,7 +10,7 @@
 				sortProperty: 'name',
 				sortDirection: 1,
 				filterTerm: '',
-				title: '',
+				title: 'tit',
 				nameName: '', 
 				emailEmail: ''
 			}
@@ -38,11 +38,7 @@
 				this.nameName = name
 				this.emailEmail = email 
 				console.log(name)
-				return '2pac'
-			},
-
-			sendName() {
-				this.$dispatch('mudar-nome', {nomeSer: 'Nome vindo do services.vue'})
+				 
 			}
 			
 
@@ -50,7 +46,7 @@
 
 		ready () {
 			//this.list = JSON.parse(this.users)
-			this.$http.get('/usuarios/listar').then((req) => this.users = req.data)
+			this.$http.get('/clients/list').then((req) => this.users = req.data)
 		}
 
 	} 
@@ -60,11 +56,11 @@
 <template>
 
 	<h1>Usuarios</h1>
-	<a href="#" @click="sendName"> CLICK HERE</a>
+	{{nameName}}
 <input type="text" class="form-control" id="" placeholder="Input field"  v-model="title">
 
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Pesquisar</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Lista de Clientes</button>
 
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg" role="document">
@@ -84,7 +80,8 @@
 			<tr>
 				<th><a href="#" @click="sort($event, 'id')">ID</a></th>
 				<th><a href="#" @click="sort($event, 'name')">Nome</a></th>
-				<th><a href="#" @click="sort($event, 'email')">Email</a></th>
+				<th><a href="#" @click="sort($event, 'fone')">Telefone</a></th>
+				<th>Endereço</th>
 				
 			</tr>
 		</thead>
@@ -94,7 +91,8 @@
 				
 				<td>{{u.id}}</td>
 				<td>{{u.name}}</td>
-				<td>{{u.email}}</td>
+				<td>{{u.fone}}</td>
+				<td>{{u.adress}}</td>
 				<td><button class="btn btn-success" @click="showUser(u.id, u.name, u.email)">Editar</button></td>
 				
 			</tr>
