@@ -1,5 +1,5 @@
 <script>
-	
+import bus from './bus' //essa classe bus serve como transporte de dados.
 	export default {
 
 		props: ['users'],
@@ -10,9 +10,9 @@
 				sortProperty: 'name',
 				sortDirection: 1,
 				filterTerm: '',
-				title: 'tit',
-				nameName: '', 
-				emailEmail: ''
+				dados: { //inicia o objeto dados que vai guardar variaveis dentro dele.
+
+      					} 
 			}
 		},
 
@@ -31,15 +31,12 @@
 					this.sortDirection = -1
 				}
 			},
-			showUser(id, name, email) {
-				
-				 
-				this.title = id
-				this.nameName = name
-				this.emailEmail = email 
-				console.log(name)
-				 
-			}
+			  inserirDados (dat) { //metodo do botão
+    		//this.dados.name = 'Yuri Alexs' 
+    		//this.dados.email = 'yuri.alexs@gmail.com'//preenche o objeto dados
+            bus.$emit('dados-clientes',  dat) //envia o objeto para a classe bus com o nome "botao-foi-clicado"
+            //console.log(dat) //debug
+        }
 			
 
 		},
@@ -55,18 +52,18 @@
 
 <template>
 
-	<h1>Usuarios</h1>
-	{{nameName}}
-<input type="text" class="form-control" id="" placeholder="Input field"  v-model="title">
+	
+ 
+ 
 
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Lista de Clientes</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Pesquisar</button>
 
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
        
-
+<h1>Lista de Clientes</h1>
 
 
 <div class="well">
@@ -93,7 +90,7 @@
 				<td>{{u.name}}</td>
 				<td>{{u.fone}}</td>
 				<td>{{u.adress}}</td>
-				<td><button class="btn btn-success" @click="showUser(u.id, u.name, u.email)">Editar</button></td>
+				<td><button class="btn btn-success" @click="inserirDados(u)" >Inserir</button></td>
 				
 			</tr>
 		</tbody>

@@ -15,7 +15,7 @@ export default {
        
   },
   
-
+  
     ready () {
 			bus.$on('botao-foi-clicado', (dados) => 
 			this.dtr = dados

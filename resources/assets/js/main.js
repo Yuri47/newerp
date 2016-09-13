@@ -5,6 +5,7 @@ import VcInsert from './components/insertClient.vue';
 import foo from './components/foo.vue';
 import bar from './components/bar.vue';
 import VueResource from 'vue-resource'
+import bus from './components/bus'
 Vue.use(VueResource)
 
  new Vue ({
@@ -12,20 +13,24 @@ Vue.use(VueResource)
 
  	components: {
 		VcUsers,
-		VcClients,
-		VcInsert,
-		foo,
-		bar 
+		VcClients
 	}, 
 
  	data: function(){
  		return{
- 		title: VcUsers.data().title, // isso pega o valor da variavel la de dentro do services.vue
- 		nameName: VcUsers.data().nameName,
+ 		
+ 			ist: {}
  		
 
  		 }
- 	}
+ 	},
+ 	ready () {
+			bus.$on('dados-clientes', (dat) => 
+			//this.nome = dados.name
+ 			this.ist = dat
+			) //o script irá pegar os dados do objeto bus dinamicamente. Aqui podemos enviar dados para o arquivo
+			//services.blade.php.
+		}
     
        
     

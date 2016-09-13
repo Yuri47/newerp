@@ -12000,6 +12000,14 @@ exports.default = bus;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+
+var _bus = require('./bus');
+
+var _bus2 = _interopRequireDefault(_bus);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//essa classe bus serve como transporte de dados.
 exports.default = {
 
 	props: ['users'],
@@ -12010,9 +12018,9 @@ exports.default = {
 			sortProperty: 'name',
 			sortDirection: 1,
 			filterTerm: '',
-			title: 'tit',
-			nameName: '',
-			emailEmail: ''
+			dados: {//inicia o objeto dados que vai guardar variaveis dentro dele.
+
+			}
 		};
 	},
 
@@ -12030,12 +12038,12 @@ exports.default = {
 				this.sortDirection = -1;
 			}
 		},
-		showUser: function showUser(id, name, email) {
-
-			this.title = id;
-			this.nameName = name;
-			this.emailEmail = email;
-			console.log(name);
+		inserirDados: function inserirDados(dat) {
+			//metodo do botão
+			//this.dados.name = 'Yuri Alexs' 
+			//this.dados.email = 'yuri.alexs@gmail.com'//preenche o objeto dados
+			_bus2.default.$emit('dados-clientes', dat); //envia o objeto para a classe bus com o nome "botao-foi-clicado"
+			//console.log(dat) //debug
 		}
 	},
 
@@ -12049,7 +12057,7 @@ exports.default = {
 	}
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n\n\t<h1 _v-bf487b86=\"\">Usuarios</h1>\n\t{{nameName}}\n<input type=\"text\" class=\"form-control\" id=\"\" placeholder=\"Input field\" v-model=\"title\" _v-bf487b86=\"\">\n\n\n<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\".bs-example-modal-lg\" _v-bf487b86=\"\">Lista de Clientes</button>\n\n<div class=\"modal fade bs-example-modal-lg\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myLargeModalLabel\" _v-bf487b86=\"\">\n  <div class=\"modal-dialog modal-lg\" role=\"document\" _v-bf487b86=\"\">\n    <div class=\"modal-content\" _v-bf487b86=\"\">\n       \n\n\n\n<div class=\"well\" _v-bf487b86=\"\">\n\t\t<input type=\"text\" class=\"form-control\" placeholder=\"Filtrar\" v-model=\"filterTerm\" _v-bf487b86=\"\">\n\t</div>\n\t<div _v-bf487b86=\"\">\n\n\t <table class=\"table table-bordered table-striped table-hover\" _v-bf487b86=\"\">\n\t \t\n\t\t<thead _v-bf487b86=\"\">\n\t\t\t<tr _v-bf487b86=\"\">\n\t\t\t\t<th _v-bf487b86=\"\"><a href=\"#\" @click=\"sort($event, 'id')\" _v-bf487b86=\"\">ID</a></th>\n\t\t\t\t<th _v-bf487b86=\"\"><a href=\"#\" @click=\"sort($event, 'name')\" _v-bf487b86=\"\">Nome</a></th>\n\t\t\t\t<th _v-bf487b86=\"\"><a href=\"#\" @click=\"sort($event, 'fone')\" _v-bf487b86=\"\">Telefone</a></th>\n\t\t\t\t<th _v-bf487b86=\"\">Endereço</th>\n\t\t\t\t\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody _v-bf487b86=\"\">\n\t\n\t\t\t<tr v-for=\"u in users | filterBy filterTerm| orderBy sortProperty sortDirection\" _v-bf487b86=\"\">\n\t\t\t\t\n\t\t\t\t<td _v-bf487b86=\"\">{{u.id}}</td>\n\t\t\t\t<td _v-bf487b86=\"\">{{u.name}}</td>\n\t\t\t\t<td _v-bf487b86=\"\">{{u.fone}}</td>\n\t\t\t\t<td _v-bf487b86=\"\">{{u.adress}}</td>\n\t\t\t\t<td _v-bf487b86=\"\"><button class=\"btn btn-success\" @click=\"showUser(u.id, u.name, u.email)\" _v-bf487b86=\"\">Editar</button></td>\n\t\t\t\t\n\t\t\t</tr>\n\t\t</tbody>\n\t\t\n\n\t </table> \n\n\t</div>\n\n\n\n\n    </div>\n  </div>\n</div>\n\n<br _v-bf487b86=\"\"><hr _v-bf487b86=\"\">\n\n\t\n\n\n\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n\n\t\n \n \n\n\n<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\".bs-example-modal-lg\" _v-bf487b86=\"\">Pesquisar</button>\n\n<div class=\"modal fade bs-example-modal-lg\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myLargeModalLabel\" _v-bf487b86=\"\">\n  <div class=\"modal-dialog modal-lg\" role=\"document\" _v-bf487b86=\"\">\n    <div class=\"modal-content\" _v-bf487b86=\"\">\n       \n<h1 _v-bf487b86=\"\">Lista de Clientes</h1>\n\n\n<div class=\"well\" _v-bf487b86=\"\">\n\t\t<input type=\"text\" class=\"form-control\" placeholder=\"Filtrar\" v-model=\"filterTerm\" _v-bf487b86=\"\">\n\t</div>\n\t<div _v-bf487b86=\"\">\n\n\t <table class=\"table table-bordered table-striped table-hover\" _v-bf487b86=\"\">\n\t \t\n\t\t<thead _v-bf487b86=\"\">\n\t\t\t<tr _v-bf487b86=\"\">\n\t\t\t\t<th _v-bf487b86=\"\"><a href=\"#\" @click=\"sort($event, 'id')\" _v-bf487b86=\"\">ID</a></th>\n\t\t\t\t<th _v-bf487b86=\"\"><a href=\"#\" @click=\"sort($event, 'name')\" _v-bf487b86=\"\">Nome</a></th>\n\t\t\t\t<th _v-bf487b86=\"\"><a href=\"#\" @click=\"sort($event, 'fone')\" _v-bf487b86=\"\">Telefone</a></th>\n\t\t\t\t<th _v-bf487b86=\"\">Endereço</th>\n\t\t\t\t\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody _v-bf487b86=\"\">\n\t\n\t\t\t<tr v-for=\"u in users | filterBy filterTerm| orderBy sortProperty sortDirection\" _v-bf487b86=\"\">\n\t\t\t\t\n\t\t\t\t<td _v-bf487b86=\"\">{{u.id}}</td>\n\t\t\t\t<td _v-bf487b86=\"\">{{u.name}}</td>\n\t\t\t\t<td _v-bf487b86=\"\">{{u.fone}}</td>\n\t\t\t\t<td _v-bf487b86=\"\">{{u.adress}}</td>\n\t\t\t\t<td _v-bf487b86=\"\"><button class=\"btn btn-success\" @click=\"inserirDados(u)\" _v-bf487b86=\"\">Inserir</button></td>\n\t\t\t\t\n\t\t\t</tr>\n\t\t</tbody>\n\t\t\n\n\t </table> \n\n\t</div>\n\n\n\n\n    </div>\n  </div>\n</div>\n\n<br _v-bf487b86=\"\"><hr _v-bf487b86=\"\">\n\n\t\n\n\n\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("C:\\wamp64\\www\\newerp\\node_modules\\vueify\\node_modules\\vue-hot-reload-api\\index.js")
   hotAPI.install(require("vue"), true)
@@ -12061,7 +12069,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"C:\\wamp64\\www\\newerp\\node_modules\\vueify\\node_modules\\vue-hot-reload-api\\index.js":4,"vue":3}],8:[function(require,module,exports){
+},{"./bus":6,"C:\\wamp64\\www\\newerp\\node_modules\\vueify\\node_modules\\vue-hot-reload-api\\index.js":4,"vue":3}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -12288,6 +12296,10 @@ var _vueResource = require('vue-resource');
 
 var _vueResource2 = _interopRequireDefault(_vueResource);
 
+var _bus = require('./components/bus');
+
+var _bus2 = _interopRequireDefault(_bus);
+
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
@@ -12299,22 +12311,29 @@ new _vue2.default({
 
   components: {
     VcUsers: _services2.default,
-    VcClients: _clients2.default,
-    VcInsert: _insertClient2.default,
-    foo: _foo2.default,
-    bar: _bar2.default
+    VcClients: _clients2.default
   },
 
   data: function data() {
     return {
-      title: _services2.default.data().title, // isso pega o valor da variavel la de dentro do services.vue
-      nameName: _services2.default.data().nameName
+
+      ist: {}
 
     };
-  }
+  },
+  ready: function ready() {
+    var _this = this;
 
+    _bus2.default.$on('dados-clientes', function (dat) {
+      return (
+        //this.nome = dados.name
+        _this.ist = dat
+      );
+    }); //o script irá pegar os dados do objeto bus dinamicamente. Aqui podemos enviar dados para o arquivo
+    //services.blade.php.
+  }
 });
 
-},{"./components/bar.vue":5,"./components/clients.vue":7,"./components/foo.vue":8,"./components/insertClient.vue":9,"./components/services.vue":10,"vue":3,"vue-resource":2}]},{},[11]);
+},{"./components/bar.vue":5,"./components/bus":6,"./components/clients.vue":7,"./components/foo.vue":8,"./components/insertClient.vue":9,"./components/services.vue":10,"vue":3,"vue-resource":2}]},{},[11]);
 
 //# sourceMappingURL=main.js.map
