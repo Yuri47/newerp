@@ -27,6 +27,7 @@
     "laravel-elixir-vueify": "^2.0.0",
     "npm-run-all": "^1.6.0",
     "uglify-js": "^2.5.0",
+    "vue": "^1.0.26",
     "vue-resource": "^0.7.0",
     "vueify": "^8.5.2",
     "watchify": "^3.4.0"

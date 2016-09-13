@@ -42,6 +42,8 @@ php artisan migrate
 
 php artisan db:seed --class=CustonUsers
 
+php artisan db:seed --class=CustonClients
+
 npm install
 
 php artisan serve
@@ -50,3 +52,6 @@ php artisan serve
 
 npm install vueify@8.5.2
 
+open other cmd and type for compile files .JS and .VUE when save:
+
+gulp watch

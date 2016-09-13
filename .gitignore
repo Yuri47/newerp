@@ -5,3 +5,5 @@ Homestead.yaml
 Homestead.json
 .env
 /apagar
+/public/js/main.js
+/public/js/main.js.map
