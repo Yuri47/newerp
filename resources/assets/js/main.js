@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VcUsers from './components/services.vue';
 import VcClients from './components/clients.vue';
 import VcInsert from './components/insertClient.vue'; 
+import foo from './components/foo.vue';
+import bar from './components/bar.vue';
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
 
@@ -11,7 +13,9 @@ Vue.use(VueResource)
  	components: {
 		VcUsers,
 		VcClients,
-		VcInsert 
+		VcInsert,
+		foo,
+		bar 
 	}, 
 
  	data: function(){

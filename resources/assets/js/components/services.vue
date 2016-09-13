@@ -1,8 +1,11 @@
 <script>
-	
+	import bar from './insertClient.vue'
 	export default {
 
 		props: ['users'],
+		components: {
+		 	bar
+		 },
 
 		data: function() {
 			return {
@@ -43,7 +46,11 @@
 
 			sendName() {
 				this.$dispatch('mudar-nome', {nomeSer: 'Nome vindo do services.vue'})
-			}
+			},
+			saveBar(bar) {
+      //save bar
+      			title = this.$on('confirmed')
+    			}
 			
 
 		},
@@ -60,7 +67,8 @@
 <template>
 
 	<h1>Usuarios</h1>
-	<a href="#" @click="sendName"> CLICK HERE</a>
+	 
+	{{title}}
 <input type="text" class="form-control" id="" placeholder="Input field"  v-model="title">
 
 

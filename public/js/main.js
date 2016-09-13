@@ -11930,6 +11930,74 @@ function format(id) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _bus = require('./bus');
+
+var _bus2 = _interopRequireDefault(_bus);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//essa classe bus serve como transporte de dados.
+exports.default = {
+  data: function data() {
+    return {
+
+      dtr: {
+        name: '', //inicia a variavel name
+        email: ''
+      }
+    };
+  },
+
+
+  methods: {},
+
+  ready: function ready() {
+    var _this = this;
+
+    _bus2.default.$on('botao-foi-clicado', function (dados) {
+      return _this.dtr = dados;
+    }); //o script irá pegar os dados do objeto bus dinamicamente. O objeto dados está com as variaveis,
+    // então basta atribuir o objeto dados ao objeto dtr. 
+  }
+};
+if (module.exports.__esModule) module.exports = module.exports.default
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "  \n  <div>\n     \n \n \nName: <input type=\"text\" v-model=\"dtr.name\" name=\"\" id=\"input\" class=\"form-control\" value=\"\" required=\"required\" pattern=\"\" title=\"\">\nEmail: <input type=\"text\" v-model=\"dtr.email\" name=\"\" id=\"input\" class=\"form-control\" value=\"\" required=\"required\" pattern=\"\" title=\"\">\n  </div>\n"
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("C:\\wamp64\\www\\newerp\\node_modules\\vueify\\node_modules\\vue-hot-reload-api\\index.js")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  var id = "C:\\wamp64\\www\\newerp\\resources\\assets\\js\\components\\bar.vue"
+  if (!module.hot.data) {
+    hotAPI.createRecord(id, module.exports)
+  } else {
+    hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+  }
+})()}
+},{"./bus":6,"C:\\wamp64\\www\\newerp\\node_modules\\vueify\\node_modules\\vue-hot-reload-api\\index.js":4,"vue":3}],6:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _vue = require('vue');
+
+var _vue2 = _interopRequireDefault(_vue);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+var bus = new _vue2.default();
+exports.default = bus;
+
+},{"vue":3}],7:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 exports.default = {
@@ -11993,7 +12061,55 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"C:\\wamp64\\www\\newerp\\node_modules\\vueify\\node_modules\\vue-hot-reload-api\\index.js":4,"vue":3}],6:[function(require,module,exports){
+},{"C:\\wamp64\\www\\newerp\\node_modules\\vueify\\node_modules\\vue-hot-reload-api\\index.js":4,"vue":3}],8:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _bus = require('./bus');
+
+var _bus2 = _interopRequireDefault(_bus);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//essa classe bus serve como transporte de dados.
+exports.default = {
+  data: function data() {
+    return {
+      dados: {//inicia o objeto dados que vai guardar variaveis dentro dele.
+
+      }
+
+    };
+  },
+
+
+  methods: {
+    buttonClickHandler: function buttonClickHandler() {
+      //metodo do botão
+      this.dados.name = 'Yuri Alexs';
+      this.dados.email = 'yuri.alexs@gmail.com'; //preenche o objeto dados
+      _bus2.default.$emit('botao-foi-clicado', this.dados); //envia o objeto para a classe bus com o nome "botao-foi-clicado"
+      console.log('botao pressionado'); //debug
+    }
+  }
+};
+if (module.exports.__esModule) module.exports = module.exports.default
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "  \n  <div> \n\t\t\t<a href=\"#\" @click=\"buttonClickHandler\">Botao Foo</a>\n\n\n\n  </div>\n"
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("C:\\wamp64\\www\\newerp\\node_modules\\vueify\\node_modules\\vue-hot-reload-api\\index.js")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  var id = "C:\\wamp64\\www\\newerp\\resources\\assets\\js\\components\\foo.vue"
+  if (!module.hot.data) {
+    hotAPI.createRecord(id, module.exports)
+  } else {
+    hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+  }
+})()}
+},{"./bus":6,"C:\\wamp64\\www\\newerp\\node_modules\\vueify\\node_modules\\vue-hot-reload-api\\index.js":4,"vue":3}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -12020,11 +12136,18 @@ exports.default = {
 			filterTerm: '',
 			title: '',
 			emailEmail: '',
-			nameName: _clients2.default.nameName
+			nameName: _clients2.default.nameName,
+			bar: {
+				msg: 'Eu sou o Bar!'
+			}
 		};
 	},
 
-	methods: {},
+	methods: {
+		confirm: function confirm() {
+			this.$emit('confirmed', this.bar);
+		}
+	},
 
 	ready: function ready() {
 		//this.list = JSON.parse(this.users)
@@ -12033,15 +12156,11 @@ exports.default = {
 	},
 
 
-	events: {
-		'mudar-nome': function mudarNome(obj) {
-			console.log(obj);
-		}
-	}
+	events: {}
 
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n name: {{nameName}}\n\n<form action=\"#\" method=\"POST\" role=\"form\" _v-5f2740ff=\"\">\n\t<legend _v-5f2740ff=\"\">Form title</legend>\n\n\t<div class=\"form-group\" _v-5f2740ff=\"\">\n\t\t<label for=\"\" _v-5f2740ff=\"\">Name</label>\n\t\t<input type=\"text\" class=\"form-control\" id=\"\" placeholder=\"{{nameName}}\" v-model=\"nameName\" \"=\"\" _v-5f2740ff=\"\">\n\t</div>\n\t<div class=\"form-group\" _v-5f2740ff=\"\">\n\t\t<label for=\"\" _v-5f2740ff=\"\">Email</label>\n\t\t<input type=\"text\" class=\"form-control\" id=\"\" placeholder=\"Input field\" v-model=\"title\" _v-5f2740ff=\"\">\n\t</div>\n\n\t\n\n\t<button type=\"submit\" class=\"btn btn-primary\" _v-5f2740ff=\"\">Submit</button>\n</form>\n \n\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n  <button @click=\"confirm\" _v-5f2740ff=\"\">Confirmar</button>\n\n<form action=\"#\" method=\"POST\" role=\"form\" _v-5f2740ff=\"\">\n\t<legend _v-5f2740ff=\"\">Form title</legend>\n\n\t<div class=\"form-group\" _v-5f2740ff=\"\">\n\t\t<label for=\"\" _v-5f2740ff=\"\">Name</label>\n\t\t<input type=\"text\" class=\"form-control\" id=\"\" placeholder=\"{{nameName}}\" v-model=\"nameName\" _v-5f2740ff=\"\">\n\t</div>\n\t<div class=\"form-group\" _v-5f2740ff=\"\">\n\t\t<label for=\"\" _v-5f2740ff=\"\">Email</label>\n\t\t<input type=\"text\" class=\"form-control\" id=\"\" placeholder=\"Input field\" v-model=\"title\" _v-5f2740ff=\"\">\n\t</div>\n\n\t\n\n\t<button type=\"submit\" class=\"btn btn-primary\" _v-5f2740ff=\"\">Submit</button>\n</form>\n \n\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("C:\\wamp64\\www\\newerp\\node_modules\\vueify\\node_modules\\vue-hot-reload-api\\index.js")
   hotAPI.install(require("vue"), true)
@@ -12053,15 +12172,25 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"./clients.vue":5,"C:\\wamp64\\www\\newerp\\node_modules\\vueify\\node_modules\\vue-hot-reload-api\\index.js":4,"vue":3}],7:[function(require,module,exports){
+},{"./clients.vue":7,"C:\\wamp64\\www\\newerp\\node_modules\\vueify\\node_modules\\vue-hot-reload-api\\index.js":4,"vue":3}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+
+var _insertClient = require('./insertClient.vue');
+
+var _insertClient2 = _interopRequireDefault(_insertClient);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 exports.default = {
 
 	props: ['users'],
+	components: {
+		bar: _insertClient2.default
+	},
 
 	data: function data() {
 		return {
@@ -12099,6 +12228,10 @@ exports.default = {
 		},
 		sendName: function sendName() {
 			this.$dispatch('mudar-nome', { nomeSer: 'Nome vindo do services.vue' });
+		},
+		saveBar: function saveBar(bar) {
+			//save bar
+			title = this.$on('confirmed');
 		}
 	},
 
@@ -12112,7 +12245,7 @@ exports.default = {
 	}
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n\n\t<h1 _v-b7a36c0e=\"\">Usuarios</h1>\n\t<a href=\"#\" @click=\"sendName\" _v-b7a36c0e=\"\"> CLICK HERE</a>\n<input type=\"text\" class=\"form-control\" id=\"\" placeholder=\"Input field\" v-model=\"title\" _v-b7a36c0e=\"\">\n\n\n<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\".bs-example-modal-lg\" _v-b7a36c0e=\"\">Pesquisar</button>\n\n<div class=\"modal fade bs-example-modal-lg\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myLargeModalLabel\" _v-b7a36c0e=\"\">\n  <div class=\"modal-dialog modal-lg\" role=\"document\" _v-b7a36c0e=\"\">\n    <div class=\"modal-content\" _v-b7a36c0e=\"\">\n       \n\n\n\n<div class=\"well\" _v-b7a36c0e=\"\">\n\t\t<input type=\"text\" class=\"form-control\" placeholder=\"Filtrar\" v-model=\"filterTerm\" _v-b7a36c0e=\"\">\n\t</div>\n\t<div _v-b7a36c0e=\"\">\n\n\t <table class=\"table table-bordered table-striped table-hover\" _v-b7a36c0e=\"\">\n\t \t\n\t\t<thead _v-b7a36c0e=\"\">\n\t\t\t<tr _v-b7a36c0e=\"\">\n\t\t\t\t<th _v-b7a36c0e=\"\"><a href=\"#\" @click=\"sort($event, 'id')\" _v-b7a36c0e=\"\">ID</a></th>\n\t\t\t\t<th _v-b7a36c0e=\"\"><a href=\"#\" @click=\"sort($event, 'name')\" _v-b7a36c0e=\"\">Nome</a></th>\n\t\t\t\t<th _v-b7a36c0e=\"\"><a href=\"#\" @click=\"sort($event, 'email')\" _v-b7a36c0e=\"\">Email</a></th>\n\t\t\t\t\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody _v-b7a36c0e=\"\">\n\t\n\t\t\t<tr v-for=\"u in users | filterBy filterTerm| orderBy sortProperty sortDirection\" _v-b7a36c0e=\"\">\n\t\t\t\t\n\t\t\t\t<td _v-b7a36c0e=\"\">{{u.id}}</td>\n\t\t\t\t<td _v-b7a36c0e=\"\">{{u.name}}</td>\n\t\t\t\t<td _v-b7a36c0e=\"\">{{u.email}}</td>\n\t\t\t\t<td _v-b7a36c0e=\"\"><button class=\"btn btn-success\" @click=\"showUser(u.id, u.name, u.email)\" _v-b7a36c0e=\"\">Editar</button></td>\n\t\t\t\t\n\t\t\t</tr>\n\t\t</tbody>\n\t\t\n\n\t </table> \n\n\t</div>\n\n\n\n\n    </div>\n  </div>\n</div>\n\n<br _v-b7a36c0e=\"\"><hr _v-b7a36c0e=\"\">\n\n\t\n\n\n\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n\n\t<h1 _v-b7a36c0e=\"\">Usuarios</h1>\n\t \n\t{{title}}\n<input type=\"text\" class=\"form-control\" id=\"\" placeholder=\"Input field\" v-model=\"title\" _v-b7a36c0e=\"\">\n\n\n<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\".bs-example-modal-lg\" _v-b7a36c0e=\"\">Pesquisar</button>\n\n<div class=\"modal fade bs-example-modal-lg\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myLargeModalLabel\" _v-b7a36c0e=\"\">\n  <div class=\"modal-dialog modal-lg\" role=\"document\" _v-b7a36c0e=\"\">\n    <div class=\"modal-content\" _v-b7a36c0e=\"\">\n       \n\n\n\n<div class=\"well\" _v-b7a36c0e=\"\">\n\t\t<input type=\"text\" class=\"form-control\" placeholder=\"Filtrar\" v-model=\"filterTerm\" _v-b7a36c0e=\"\">\n\t</div>\n\t<div _v-b7a36c0e=\"\">\n\n\t <table class=\"table table-bordered table-striped table-hover\" _v-b7a36c0e=\"\">\n\t \t\n\t\t<thead _v-b7a36c0e=\"\">\n\t\t\t<tr _v-b7a36c0e=\"\">\n\t\t\t\t<th _v-b7a36c0e=\"\"><a href=\"#\" @click=\"sort($event, 'id')\" _v-b7a36c0e=\"\">ID</a></th>\n\t\t\t\t<th _v-b7a36c0e=\"\"><a href=\"#\" @click=\"sort($event, 'name')\" _v-b7a36c0e=\"\">Nome</a></th>\n\t\t\t\t<th _v-b7a36c0e=\"\"><a href=\"#\" @click=\"sort($event, 'email')\" _v-b7a36c0e=\"\">Email</a></th>\n\t\t\t\t\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody _v-b7a36c0e=\"\">\n\t\n\t\t\t<tr v-for=\"u in users | filterBy filterTerm| orderBy sortProperty sortDirection\" _v-b7a36c0e=\"\">\n\t\t\t\t\n\t\t\t\t<td _v-b7a36c0e=\"\">{{u.id}}</td>\n\t\t\t\t<td _v-b7a36c0e=\"\">{{u.name}}</td>\n\t\t\t\t<td _v-b7a36c0e=\"\">{{u.email}}</td>\n\t\t\t\t<td _v-b7a36c0e=\"\"><button class=\"btn btn-success\" @click=\"showUser(u.id, u.name, u.email)\" _v-b7a36c0e=\"\">Editar</button></td>\n\t\t\t\t\n\t\t\t</tr>\n\t\t</tbody>\n\t\t\n\n\t </table> \n\n\t</div>\n\n\n\n\n    </div>\n  </div>\n</div>\n\n<br _v-b7a36c0e=\"\"><hr _v-b7a36c0e=\"\">\n\n\t\n\n\n\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("C:\\wamp64\\www\\newerp\\node_modules\\vueify\\node_modules\\vue-hot-reload-api\\index.js")
   hotAPI.install(require("vue"), true)
@@ -12124,7 +12257,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"C:\\wamp64\\www\\newerp\\node_modules\\vueify\\node_modules\\vue-hot-reload-api\\index.js":4,"vue":3}],8:[function(require,module,exports){
+},{"./insertClient.vue":9,"C:\\wamp64\\www\\newerp\\node_modules\\vueify\\node_modules\\vue-hot-reload-api\\index.js":4,"vue":3}],11:[function(require,module,exports){
 'use strict';
 
 var _vue = require('vue');
@@ -12143,6 +12276,14 @@ var _insertClient = require('./components/insertClient.vue');
 
 var _insertClient2 = _interopRequireDefault(_insertClient);
 
+var _foo = require('./components/foo.vue');
+
+var _foo2 = _interopRequireDefault(_foo);
+
+var _bar = require('./components/bar.vue');
+
+var _bar2 = _interopRequireDefault(_bar);
+
 var _vueResource = require('vue-resource');
 
 var _vueResource2 = _interopRequireDefault(_vueResource);
@@ -12159,7 +12300,9 @@ new _vue2.default({
   components: {
     VcUsers: _services2.default,
     VcClients: _clients2.default,
-    VcInsert: _insertClient2.default
+    VcInsert: _insertClient2.default,
+    foo: _foo2.default,
+    bar: _bar2.default
   },
 
   data: function data() {
@@ -12172,6 +12315,6 @@ new _vue2.default({
 
 });
 
-},{"./components/clients.vue":5,"./components/insertClient.vue":6,"./components/services.vue":7,"vue":3,"vue-resource":2}]},{},[8]);
+},{"./components/bar.vue":5,"./components/clients.vue":7,"./components/foo.vue":8,"./components/insertClient.vue":9,"./components/services.vue":10,"vue":3,"vue-resource":2}]},{},[11]);
 
 //# sourceMappingURL=main.js.map

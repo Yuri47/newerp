@@ -8,8 +8,12 @@
 <script>console.log('@{{nameName}}')</script>
 
  
-<vc-users></vc-users>
-<vc-insert></vc-insert>
+
+<foo></foo>
+<hr>
+<hr>
+<hr>
+<bar></bar>
  
 <!-- <form action="#" method="POST" role="form">
 	<legend>Form title</legend>

@@ -15,13 +15,18 @@
 				filterTerm: '',
 				title: '', 
 				emailEmail: '',
-				nameName: clients.nameName
+				nameName: clients.nameName,
+				 bar: {
+        			msg: 'Eu sou o Bar!'
+      			}
 			}
 		},
 
 		methods: {
-
-			 
+ 			confirm() {
+ 				this.$emit('confirmed', this.bar)
+ 			}
+			
 
 		},
 
@@ -32,9 +37,7 @@
 		},
  	
  		events: {
- 		'mudar-nome' (obj) {
- 			 console.log(obj)
- 		}
+ 		   
  	}
 
 	} 
@@ -42,14 +45,14 @@
 </script>
 
 <template>
- name: {{nameName}}
+  <button @click="confirm">Confirmar</button>
 
 <form action="#" method="POST" role="form">
 	<legend>Form title</legend>
 
 	<div class="form-group">
 		<label for="">Name</label>
-		<input type="text" class="form-control" id="" placeholder="{{nameName}}" v-model="nameName"">
+		<input type="text" class="form-control" id="" placeholder="{{nameName}}" v-model="nameName">
 	</div>
 	<div class="form-group">
 		<label for="">Email</label>
