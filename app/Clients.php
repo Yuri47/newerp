@@ -9,7 +9,7 @@ class Clients extends Model
     //
 
 	protected $fillable = [
-       'id', 'name', 'adress', 'fone',
+       'id', 'name', 'address', 'fone'
     ];
 
 }

@@ -20,7 +20,7 @@ class CustonClients extends Seeder
         for ($i = 0; $i < $limit; $i++) {
             DB::table('clients')->insert([ //,
                 'name' => $faker->name,
-        		'adress' => $faker->city,
+        		'address' => $faker->city,
                 'fone' => $faker->phoneNumber 
             ]);
         }

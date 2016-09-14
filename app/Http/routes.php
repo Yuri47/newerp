@@ -24,3 +24,9 @@ Route::get('clients/list', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/insertclient', function() {
+		return view('cadastrarcliente');
+});
+
+Route::post('/newclient', 'ClientController@newClient');

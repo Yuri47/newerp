@@ -30,6 +30,12 @@ Vue.use(VueResource)
  			this.ist = dat
 			) //o script irá pegar os dados do objeto bus dinamicamente. Aqui podemos enviar dados para o arquivo
 			//services.blade.php.
+		},
+
+		methods: {
+			limp () {
+        this.ist = ''
+    }
 		}
     
        
