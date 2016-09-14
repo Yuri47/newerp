@@ -44,6 +44,8 @@ import bus from './bus' //essa classe bus serve como transporte de dados.
 		ready () {
 			//this.list = JSON.parse(this.users)
 			this.$http.get('/clients/list').then((req) => this.users = req.data)
+
+
 		}
 
 	} 
@@ -59,7 +61,7 @@ import bus from './bus' //essa classe bus serve como transporte de dados.
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Pesquisar</button>
 
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade bs-example-modal-lg shown.bs.modal" :autofocus id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
        
@@ -67,7 +69,7 @@ import bus from './bus' //essa classe bus serve como transporte de dados.
 
 
 <div class="well">
-		<input type="text" class="form-control" placeholder="Filtrar" v-model="filterTerm">
+		<input type="text" class="form-control"  id="myInput" placeholder="Filtrar C" v-model="filterTerm"   >
 	</div>
 	<div>
 

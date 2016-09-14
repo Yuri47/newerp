@@ -30,3 +30,8 @@ Route::get('/insertclient', function() {
 });
 
 Route::post('/newclient', 'ClientController@newClient');
+Route::get('clients/list/{id}', function ($id) {
+	return \Response::json(App\Clients::findOrFail($id), 200);
+});
+ 
+Route::get('editclient', array('as'=>'editclient', 'uses'=>'ClientController@editClient'));
