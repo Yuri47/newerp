@@ -21,7 +21,7 @@
 
  <div id="divEdit"> 
   
-   
+     {!!(string)Session::get('temp')!!}
 <!-- name: <input type="text" class="texto" id="valueText"> -->
  <div class="form-group">
         <label for="">Name</label>

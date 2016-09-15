@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Clients;
 
+use Redirect;
+use DB;
 class ClientController extends Controller
 {
     //
@@ -16,7 +18,12 @@ class ClientController extends Controller
 	public function newClient(Request $req) {
 		$client = $req->except('id');
 		Clients::create($client);
-		return $client;
+
+		 
+
+		//return Redirect::to('insertclient'); 
+		 return DB::getPdo()->lastInsertId();//isso retorna o ultimo ID inserido, será usado para pegar o id do cliente e colocar na
+		 //tabela de equipamentos
 
 	}
  
