@@ -13,114 +13,163 @@
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg1" :disabled="!ist.id">Editar</button>
 
+
+<!--================================================
+=            MODAL DE EDIÇÃO DO CLIENTE            =
+=================================================-->
+
+ 
+
+
+
 <div class="modal fade bs-example-modal-lg1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-       
-<h1>Editar Cliente</h1>
+      <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+               
+              <h1>Editar Cliente</h1>
 
- <div id="divEdit"> 
+              <div id="divEdit"> 
+          
+              {!!(string)Session::get('temp')!!}
+        <!-- name: <input type="text" class="texto" id="valueText"> -->
+                <div class="form-group">
+                  <label for="">Name</label>
+                  <input type="text" class="form-control"  autofocus required placeholder=" Name" id="nameEdit" name="name" v-model="ist.name" >
+
+                </div>
+             <div class="form-group">
+                <label for="">Fone</label>
+                <input type="text" class="form-control"  required placeholder="Fone" id="foneEdit" name="fone"  v-model="ist.fone" >
+            </div>
+            <div class="form-group">
+                <label for="">Address</label>
+                <input type="text" class="form-control"  required placeholder="Address" id="addressEdit" name="address"   v-model="ist.address"  >
+            </div>
+             <input type="hidden" name="id" id="id" value="@{{ist.id}}">
+        <br><br>
+        <button type="button" class="btn btn-lg btn-danger" data-dismiss="modal" aria-label="Close">Fechar</button>
+         <button id="1" class="btn btn-lg btn-primary">Editar</button> <br>
+
+
+        <br>
+        <br>
+        <br>
+
+        </div>
+
+        <div class="alert alert-success" id="editSuccess">
+        <strong>Sucesso!</strong>
+        O cliente <strong> @{{ist.name}}</strong>  foi alterado. 
+        <br><br>
+        <button type="button" class="btn btn-lg btn-danger" data-dismiss="modal" aria-label="Close">Fechar</button>
+        </div>
+
+            </div>
+          </div>
+</div>
+
+
+<!--====  End of MODAL DE EDIÇÃO DO CLIENTE  ====-->
+
+
+
+ 
+
+
+ <!--==========================================
+ =            FORM DE NOVO CLIENTE            =
+ ===========================================-->
   
-     {!!(string)Session::get('temp')!!}
-<!-- name: <input type="text" class="texto" id="valueText"> -->
- <div class="form-group">
-        <label for="">Name</label>
-        <input type="text" class="form-control"  autofocus required placeholder=" Name" id="nameEdit" name="name" v-model="ist.name" >
-
-    </div>
-     <div class="form-group">
-        <label for="">Fone</label>
-        <input type="text" class="form-control"  required placeholder="Fone" id="foneEdit" name="fone"  v-model="ist.fone" >
-    </div>
-    <div class="form-group">
-        <label for="">Address</label>
-        <input type="text" class="form-control"  required placeholder="Address" id="addressEdit" name="address"   v-model="ist.address"  >
-    </div>
-     <input type="hidden" name="id" id="id" value="@{{ist.id}}">
-<br><br>
-<button type="button" class="btn btn-lg btn-danger" data-dismiss="modal" aria-label="Close">Fechar</button>
- <button id="1" class="btn btn-lg btn-primary">Editar</button> <br>
-
-
-<br>
-<br>
-<br>
-
-</div>
-
-<div class="alert alert-success" id="editSuccess">
-<strong>Sucesso!</strong>
-O cliente <strong> @{{ist.name}}</strong>  foi alterado. 
-<br><br>
-<button type="button" class="btn btn-lg btn-danger" data-dismiss="modal" aria-label="Close">Fechar</button>
-</div>
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
- 
-  <form action="/newclient" method="POST" role="form">
+  <form action="/newservice" method="POST" role="form">
      
       <input type="hidden" name="_token" value="{{csrf_token()}}">
       <input type="hidden" name="id" value="@{{ist.id}}">
-    <div class="form-group">
+      <div class="form-group">
         <label for="">Name</label>
         <input type="text" class="form-control" id="" required placeholder=" Name"  name="name"  v-model="ist.name" :readonly="ist.id">
 
-    </div>
-    <div class="form-group">
+      </div>
+      <div class="form-group">
         <label for="">Fone</label>
         <input type="text" class="form-control" id="" required placeholder="Fone"  name="fone"   v-model="ist.fone" :readonly="ist.id">
-    </div>
-    <div class="form-group">
         <label for="">Address</label>
+      </div>
+      <div class="form-group">
         <input type="text" class="form-control" id="" required placeholder="Address" name="address"   v-model="ist.address" :readonly="ist.id" >
-    </div>
+      </div>
 
     
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+     <!--  <button type="submit" class="btn btn-primary">Submit</button> -->
+<!-- </form> -->
    
 
+ <!--====  End of FORM DE NOVO CLIENTE  ====-->
+
+
+
+
+<!--=====================================
+=            FORM DE EQUIPAMENTOS       =
+======================================-->
+
+<!-- <form action="newservice" method="POST" role="form"> -->
+  <legend>Equipamento</legend>
+   
+  <div class="form-group">
+    <label for="">Nº de Série</label>
+    <input type="text" class="form-control" id="" name="serialNumber" placeholder="Input field">
+  </div>
+
+  <div class="form-group">
+    <label for="">Marca</label>
+    <input type="text" class="form-control" id="" name="mark" placeholder="Input field">
+  </div>
+
+  <div class="form-group">
+      <label for="">Modelo</label>
+      <input type="text" class="form-control" id="" name="design" placeholder="Input field">
+  </div>
+
+  <div class="form-group">
+      <label for="">Defeito Reclamado</label>
+      <input type="text" class="form-control" id="" name="problem" placeholder="Input field">
+  </div>
+
+  <div class="form-group">
+      <label for="">Observações</label>
+      <input type="text" class="form-control" id="" name="observations" placeholder="Input field"> 
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<!--====  End of FORM DE EQUIPAMENTOS  ====-->
 
 
 
 
 
-  <script src="/js/main.js"></script>
-</div>
-
-
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 
 
 
 
+
+
+
+
+
+
+ 
+</div> <!-- FIM DA DIV CONTAINER -->
+
+
+
+<script src="/js/main.js"></script>
+  <script src="/js/jquery.min.1.11.3.js"></script>
+ 
+  
 <script type="text/javascript" >
 
  

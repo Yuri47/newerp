@@ -35,3 +35,5 @@ Route::get('clients/list/{id}', function ($id) {
 });
  
 Route::get('editclient', array('as'=>'editclient', 'uses'=>'ClientController@editClient'));
+
+Route::post('newservice', 'ServiceController@newService');
