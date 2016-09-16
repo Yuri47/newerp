@@ -77,9 +77,9 @@
             </div>
         </div>
     </nav>
-
+<div class="container">
     @yield('content')
-
+</div>
     <!-- JavaScripts -->
      
     <script src="/js/jquery.min.2.2.3.js"></script>
